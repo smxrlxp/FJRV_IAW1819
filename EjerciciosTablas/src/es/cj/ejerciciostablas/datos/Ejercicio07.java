@@ -2,6 +2,7 @@ package es.cj.ejerciciostablas.datos;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Ejercicio07 {
 
@@ -13,15 +14,38 @@ public class Ejercicio07 {
 	// alumno y devuelve la media final de ese alumno
 
 	// Datos de alumnos (notas)
-	private static int alumnos[][] = new int[10][3];
+	private static int alumnos[][];
 	
 	// Medias por trimestres
-	private static double mediasT[] = new double [alumnos[0].length];
+	private static double mediasT[];
 	
 	// Medias por alumnos
-	private static double mediasA[] = new double [alumnos.length];
+	private static double mediasA[];
+	
+	private static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		int numAlumnos = 0;
+		do {
+			System.out.println("Nº Alumnos: ");
+			numAlumnos = sc.nextInt();
+		} while (numAlumnos <= 0);
+		
+		int trimestres = 0;
+		do {
+			System.out.println("Nº Trimestres: ");
+			trimestres = sc.nextInt();
+		} while (trimestres <= 0);
+		
+		// Datos de alumnos (notas)
+		alumnos = new int[numAlumnos][trimestres];
+		
+		// Medias por trimestres
+		mediasT = new double [alumnos[0].length];
+		
+		// Medias por alumnos
+		mediasA = new double [alumnos.length];
+		
 		leerNotas();
 		
 		mostrarNotas();
@@ -29,6 +53,8 @@ public class Ejercicio07 {
 		calcularMedias();
 		
 		mostrarMedias();
+		
+		sc.close();
 	}
 
 	private static void mostrarMedias() {
@@ -53,14 +79,14 @@ public class Ejercicio07 {
 				mediasT[j] += alumnos[i][j];
 				mediasA[i] += alumnos[i][j];
 			}
-			mediasA[i] /= mediasT.length;
+			mediasA[i] = Math.rint((mediasA[i] / mediasT.length)*100)/100;
 		}
 		calcularMediasTrimestre();
 	}
 
 	private static void calcularMediasTrimestre() {
 		for (int i = 0; i < mediasT.length; i++) {
-			mediasT[i] /= mediasA.length;
+			mediasT[i] = Math.rint((mediasT[i] / mediasA.length)*100)/100;
 		}
 	}
 
