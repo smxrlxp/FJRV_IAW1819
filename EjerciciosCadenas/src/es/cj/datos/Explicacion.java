@@ -1,71 +1,75 @@
 package es.cj.datos;
 
-import java.util.Arrays;
-
 public class Explicacion {
 
 	public static void main(String[] args) {
-		String cadena1 = "hola";
-		String cadena2 = "HOLA";
+//		String cadena1 = "valar1";
+//		String cadena2 = "Valor2";
+//		if(cadena1.compareToIgnoreCase(cadena2)==0)
+//			System.out.println("iguales");
+//		else
+//			System.out.println("distintas");
+//		
+//		String res = cadena1.concat(cadena2);
+//		System.out.println(res);
+//		
+//		if (cadena1.contains("Or1"))
+//			System.out.println("Sí");
+//		else
+//			System.out.println("No");
+//		
+//		if (cadena1.endsWith("or2"))
+//			System.out.println("Sí Termina");
+//		else
+//			System.out.println("No Termina");
+//		
+//		System.out.println(cadena1.indexOf("a"));
+//		System.out.println(cadena1.lastIndexOf("a"));
+//		
+//		if (cadena1.equals("") || cadena1.length() == 0 || cadena1.isEmpty())
+//			System.out.println("Cadena vacía");
+//		
+//		cadena1 = cadena1.replace("a", "o");
+//		System.out.println(cadena1.replace("a", "o"));
+//		
+//		String texto = "1 javier ruano 38 sevilla";
+//		String [] tabla = texto.split(" ");
+//		for (String aux : tabla) {
+//			System.out.println(aux);
+//		}
+//		
+//		System.out.println("TEXTO: " + texto.substring(2, 8));
+//		
+//		char [] letras = texto.toCharArray();
+//		for (char c : letras) {
+//			System.out.println(c);
+//		}
+//		for (int i = 0; i < letras.length; i++) {
+//			System.out.println(letras[i]);
+//		}
+//		
+//		String nombre = " JAVIER ";
+//		System.out.println(nombre.trim().length());
+//	
+//		int a = 23;
+//		String aa = String.valueOf(a);
+//		System.out.println(aa);
 		
-		if (cadena1.equalsIgnoreCase(cadena2))
-			System.out.println("Iguales");
-		else
-			System.out.println("Distintas");
 		
-		cadena1 = cadena1.concat(cadena2);
-		System.out.println(cadena1);
 		
-		if (cadena1.contains("lala"))
-			System.out.println("Lo tiene");
 		
-		System.out.println(cadena1.toLowerCase().lastIndexOf("a"));
-		
-		if (cadena1.equals("") || cadena1.length() == 0 || cadena1.isEmpty())
-			System.out.println("Cadena vacía");
-		
-		cadena1 = cadena1.replace("h", "P");
-		System.out.println(cadena1);
-		
-		System.out.println(cadena1.substring(0, 3));
-		
-		char [] letras = cadena1.toCharArray();
-		System.out.println(Arrays.toString(letras));
-		
-		String usuario = " javiyo ";
-		usuario = usuario.trim();
-		System.out.println(usuario);
-		
-		StringBuffer sb = new StringBuffer(cadena1);
-		
-		sb.append("adios");
-		System.out.println(sb.toString());
-		
-		sb.insert(0, "Inicio");
-		System.out.println(sb.toString());
-		
-		sb.deleteCharAt(7);
-		sb.replace(0, 3, "avion");
-		System.out.println(sb.toString());
-		
-		sb.reverse();
-		
-		String frase = "Hola que tal estás 12;34;46";
-		String [] palabras = frase.split(" ");
-		for (int i = 0; i < palabras.length; i++) {
-			System.out.println(palabras[i]);
-		}
-		String [] numeros = palabras[4].split(";");
-		for (int i = 0; i < numeros.length; i++) {
-			System.out.println(numeros[i]);
-		}
- 	}
+		StringBuffer sb = new StringBuffer("hola");
+		sb.append(" que tal");
+		System.out.println(sb);
+		sb.delete(4, sb.length());
+		System.out.println(sb);
+		sb.deleteCharAt(0);
+		System.out.println(sb);
+		sb.insert(2, "texto largo");
+		System.out.println(sb);
+		sb.replace(0, 3, "Nuevo");
+		System.out.println(sb);
+		System.out.println(sb.reverse());
+	}
 
 }
-
-
-
-
-
-
-
