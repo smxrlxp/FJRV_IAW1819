@@ -1,10 +1,17 @@
 package es.cj.controller;
 
 import java.io.IOException;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import es.cj.bean.Conexion;
+import es.cj.bean.Usuario;
+import es.cj.dao.UsuarioDAO;
+import es.cj.dao.UsuarioDAOImpl;
 
 /**
  * Servlet implementation class ValidarUsuario
@@ -34,7 +41,21 @@ public class ValidarUsuario extends HttpServlet {
 		String usuario = request.getParameter("usuario");
 		String password = request.getParameter("password");
 		
-		if (usuario.equalsIgnoreCase("yo") && password.equalsIgnoreCase("yo")) {
+		// Voy a capturar los datos del web.xml
+		ServletContext sc = getServletContext();
+		String usu = sc.getInitParameter("usuario");
+		String pass = sc.getInitParameter("password");
+		String driver = sc.getInitParameter("driver");
+		String bd = sc.getInitParameter("database");
+		
+		// Crear un objeto de tipo Conexion con los datos anteriores
+		Conexion con = new Conexion(usu, pass, driver, bd);
+		
+		// voy a llamar al método comprobarUsuario que devuelve el usuario o null
+		UsuarioDAO uDAO = new UsuarioDAOImpl();
+		Usuario u = uDAO.comprobarUsuario(usuario, password, con);
+		
+		if (u!=null) {
 			response.sendRedirect("principalUsuario.jsp");
 		} else {
 			response.sendRedirect("index.jsp?mensaje=Usuario y/o Password Incorrecto");
