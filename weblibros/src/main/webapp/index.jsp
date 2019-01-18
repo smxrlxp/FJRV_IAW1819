@@ -50,7 +50,7 @@
 						required="required">
 				</div>
 				<button type="submit" class="btn btn-primary"><i class="fas fa-share-square"></i> Enviar</button>
-				<button type="button" class="btn btn-secondary"><i class="fas fa-user-plus"></i> Registrar</button>
+				<button type="button" class="btn btn-secondary" onclick="location.href='jsp/registrar.jsp'"><i class="fas fa-user-plus"></i> Registrar</button>
 			</form>
 
 		</div>

@@ -38,4 +38,44 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		return u;
 	}
 
+	public boolean existeLogin(String login, Conexion c) {
+		boolean existe = false;
+		
+		String sql = "SELECT * FROM usuarios WHERE login = ?";
+		try {
+			PreparedStatement sentencia = c.getConector().prepareStatement(sql);
+			sentencia.setString(1, login);
+			ResultSet resultado = sentencia.executeQuery();
+			if (resultado.next()) {
+				existe = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return existe;
+	}
+
+	public boolean existeEmail(String email, Conexion c) {
+boolean existe = false;
+		
+		String sql = "SELECT * FROM usuarios WHERE email = ?";
+		try {
+			PreparedStatement sentencia = c.getConector().prepareStatement(sql);
+			sentencia.setString(1, email);
+			ResultSet resultado = sentencia.executeQuery();
+			if (resultado.next()) {
+				existe = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return existe;
+	}
+
+
+
 }
